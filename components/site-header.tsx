@@ -3,26 +3,17 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Globe, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useLanguage } from "@/contexts/language-context"
 import { useState } from "react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 export function SiteHeader() {
   const pathname = usePathname()
-  const { language, setLanguage, t } = useLanguage()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const isActive = (path: string) => {
     if (path === "/") return pathname === "/"
     return pathname.startsWith(path)
-  }
-
-  const handleLanguageChange = (lang: "en" | "uz") => {
-    console.log("[v0] SiteHeader: Language change requested:", lang)
-    setLanguage(lang)
-    console.log("[v0] SiteHeader: Language changed to:", lang)
   }
 
   return (
@@ -45,7 +36,7 @@ export function SiteHeader() {
                 isActive("/") && pathname === "/" ? "text-[#5B8DEF]" : "text-gray-700",
               )}
             >
-              {t("home")}
+              Home
             </Link>
             <Link
               href="/categories"
@@ -54,7 +45,7 @@ export function SiteHeader() {
                 isActive("/categories") ? "text-[#5B8DEF]" : "text-gray-700",
               )}
             >
-              {t("categories")}
+              Categories
             </Link>
             <Link
               href="/news"
@@ -63,7 +54,7 @@ export function SiteHeader() {
                 isActive("/news") ? "text-[#5B8DEF]" : "text-gray-700",
               )}
             >
-              {t("news")}
+              News
             </Link>
             <Link
               href="/articles"
@@ -72,15 +63,12 @@ export function SiteHeader() {
                 isActive("/articles") ? "text-[#5B8DEF]" : "text-gray-700",
               )}
             >
-              {t("articles")}
+              Articles
             </Link>
           </nav>
 
           {/* Actions - Right */}
           <div className="flex items-center justify-end gap-3">
-            {/* Language Switcher */}
-           
-
             {/* Desktop Auth Buttons */}
             <div className="hidden md:flex items-center gap-2">
               <Link href="/login">
@@ -89,12 +77,12 @@ export function SiteHeader() {
                   size="sm"
                   className="text-[#5B8DEF] border-[#5B8DEF] hover:bg-[#5B8DEF] hover:text-white transition-colors bg-transparent"
                 >
-                  {t("login")}
+                  Log in
                 </Button>
               </Link>
               <Link href="/signup">
                 <Button size="sm" className="bg-[#5B8DEF] hover:bg-[#4A7DD8] transition-colors">
-                  {t("signUp")}
+                  Sign up
                 </Button>
               </Link>
             </div>
@@ -124,7 +112,7 @@ export function SiteHeader() {
               )}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t("home")}
+              Home
             </Link>
             <Link
               href="/categories"
@@ -134,7 +122,7 @@ export function SiteHeader() {
               )}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t("categories")}
+              Categories
             </Link>
             <Link
               href="/news"
@@ -144,7 +132,7 @@ export function SiteHeader() {
               )}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t("news")}
+              News
             </Link>
             <Link
               href="/articles"
@@ -154,7 +142,7 @@ export function SiteHeader() {
               )}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t("articles")}
+              Articles
             </Link>
             <div className="flex flex-col gap-2 pt-3 mt-3 border-t">
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
@@ -162,11 +150,11 @@ export function SiteHeader() {
                   variant="outline"
                   className="w-full text-[#5B8DEF] border-[#5B8DEF] hover:bg-[#5B8DEF] hover:text-white bg-transparent"
                 >
-                  {t("login")}
+                  Log in
                 </Button>
               </Link>
               <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full bg-[#5B8DEF] hover:bg-[#4A7DD8]">{t("signUp")}</Button>
+                <Button className="w-full bg-[#5B8DEF] hover:bg-[#4A7DD8]">Sign up</Button>
               </Link>
             </div>
           </nav>

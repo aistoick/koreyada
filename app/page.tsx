@@ -9,13 +9,8 @@ import { NewsCard } from "@/components/news-card"
 import { ArticleCard } from "@/components/article-card"
 import { BusinessCard } from "@/components/business-card"
 import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/contexts/language-context"
-
-type ApiObj<T> = Record<string, T>
 
 export default function HomePage() {
-  const { t } = useLanguage()
-
   const [categories, setCategories] = useState<any[]>([])
   const [news, setNews] = useState<any[]>([])
   const [articles, setArticles] = useState<any[]>([])
@@ -123,8 +118,10 @@ export default function HomePage() {
       {/* Hero */}
       <section className="bg-gradient-to-b from-white to-gray-50 py-12 md:py-16 px-4">
         <div className="container max-w-5xl mx-auto text-center space-y-6">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">{t("heroTitle")}</h1>
-          <SearchBar placeholder={t("searchPlaceholder")} />
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+            Your Gateway to Life in Korea
+          </h1>
+          <SearchBar placeholder="Search for anything..." />
         </div>
       </section>
 
@@ -132,10 +129,10 @@ export default function HomePage() {
       <section className="py-12 md:py-16 px-4">
         <div className="container mx-auto">
           <div className="flex items-center justify-between mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#5B8DEF]">{t("categoriesTitle")}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#5B8DEF]">Categories</h2>
             <Link href="/categories">
               <Button variant="outline" className="border-gray-300 bg-transparent text-sm md:text-base">
-                {t("viewAll")}
+                View All
               </Button>
             </Link>
           </div>
@@ -158,12 +155,11 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="flex items-center justify-between mb-6 md:mb-8">
             <h2 className="text-2xl md:text-3xl font-bold">
-              <span className="text-[#5B8DEF]">{t("koreaNews").split(" ")[0]}</span>{" "}
-              {t("koreaNews").split(" ")[1]}
+              <span className="text-[#5B8DEF]">Korea</span> News
             </h2>
             <Link href="/news">
               <Button variant="outline" className="border-gray-300 bg-transparent text-sm md:text-base">
-                {t("viewAll")}
+                View All
               </Button>
             </Link>
           </div>
@@ -180,12 +176,11 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="flex items-center justify-between mb-6 md:mb-8">
             <h2 className="text-2xl md:text-3xl font-bold">
-              <span className="text-[#5B8DEF]">{t("latestArticles").split(" ")[0]}</span>{" "}
-              {t("latestArticles").split(" ")[1]}
+              <span className="text-[#5B8DEF]">Latest</span> Articles
             </h2>
             <Link href="/articles">
               <Button variant="outline" className="border-gray-300 bg-transparent text-sm md:text-base">
-                {t("viewAll")}
+                View All
               </Button>
             </Link>
           </div>
@@ -211,12 +206,11 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="flex items-center justify-between mb-6 md:mb-8">
             <h2 className="text-2xl md:text-3xl font-bold">
-              <span className="text-[#5B8DEF]">{t("featuredBusinesses").split(" ")[0]}</span>{" "}
-              {t("featuredBusinesses").split(" ")[1]}
+              <span className="text-[#5B8DEF]">Featured</span> Businesses
             </h2>
             <Link href="/business">
               <Button variant="outline" className="border-gray-300 bg-transparent text-sm md:text-base">
-                {t("viewAll")}
+                View All
               </Button>
             </Link>
           </div>
